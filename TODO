@@ -1,0 +1,17 @@
+
+Clone Protection (No two users with same nick on server)
+
+/* ---- */
+
+Bugs in ID CTF (apparently)
+---
+
+Crashes server:
+
+  say_team  I'm %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l %l 
+
+As does:
+
+/set skin oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo/ctf_r
+
+/* ---- */

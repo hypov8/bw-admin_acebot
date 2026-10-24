@@ -1,0 +1,642 @@
+<HTML>
+
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="Author" content="Zarjazz">
+<META name="Generator" content="A buggy bit of M$ software and several cans of coke">
+<META name="Description" content="bw-admin barrysworld bot detection admin plug-in dll for quake2">
+<META name="Keywords" content="zbot, detection, bot detection, barrysworld, bw-admin, quake2">
+
+<STYLE type="text/css">
+<!--
+	A:hover { color: red } 
+	A:link {text-decoration: none}
+	A:visited {text-decoration: none}
+	A:active text-decoration: none}
+ -->
+</STYLE>
+
+<TITLE>BW-Admin</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#000000" TEXT="#FFFFFF" LINK="gold" VLINK="gold" ALINK="#FF0000">
+
+<BASEFONT FACE="Arial, Times New Roman">
+
+<p align="center"><font size=+3 COLOR="blue">BW-Admin Documentation</font></p>
+
+<p align="center"><font size=+2 COLOR="#8080FF">Current Version: 1.72</font></p>
+
+<p align="center"><font size=+1 COLOR="red">Barrysworld Bot Detection & Admin Plug-In DLL<br>
+For Quake2 & KingPin<br></font></p>
+
+<p align="center"><small>(or <b>BW-Admin</b> for short :)</small></p>
+
+<p align="center">
+<TABLE BORDER="0" CELLPADDING="1" ALIGN="CENTER">
+
+<TR ALIGN=CENTER><TD COLSPAN=3>DOWNLOAD Current Version</TD></TR>
+
+<TR>
+  <TD>Windows 95/98/NT</TD>
+  <TD COLSPAN=2 ALIGN=CENTER><a href="files/bw-admin.v1.72.zip">bw-admin.zip</a></TD>
+</TR>
+<TR>
+  <TD>Linux (Linux: glibc v2.1)</TD>
+  <TD><a href="files/bw-admin.linux.v1.72.tar.gz">tar.gz</a> archive</TD>
+</TR>
+<TR>
+  <TD>Linux (Linux: libc)</TD>
+  <TD><a href="files/bw-admin.linux-libc.v1.72.tar.gz">tar.gz</a> archive</TD>
+</TR>
+<TR>
+  <TD>FreeBSD (ELF Binary Format)</TD>
+  <TD><a href="files/bw-admin.freebsd.v1.72.tar.gz">tar.gz</a> archive</TD>
+</TR>
+<TR>
+  <TD>Sparc Solaris</TD>
+  <TD COLSPAN=2 ALIGN=CENTER><a href="files/bw-admin.sparc-solaris.v1.72.tar.gz">tar.gz</a> archive</TD>
+</TR>
+
+</TABLE>
+</p>
+
+
+<blockquote>
+
+<!-- Features -->
+
+<font size=+1 COLOR="#00FFFF">Features:</font></p>
+
+<blockquote>
+<p>A transparent DLL that adds to <i>any</i> existing Server MOD:
+Logged Bot detection and kicking. Rate and 'cl_maxfps' capping.
+Player IP and NAME banning. Server MOTD and other Admin options.
+Configurable item/weapon spawning. Reserving nicks to specific IP's.
+Flood protection and speech filtering for offensive keywords.</p>
+</blockquote>
+
+<p align="center"><font size=-1>For those interested in writing their
+own plug-in then here is some example code illustrating how to do it:<br>
+<a href="files/plugin.c">Download Plug-In Source Code</a></font></p>
+
+<font size=+1 COLOR="#00FFFF">Latest Version Info:</font></p>
+
+<p><font size="-2" color="yellow">04/06/00</font>
+<font COLOR="#FF00FF">v1.72</font></p>
+
+Changes:
+
+<ul>
+ <li>New version detects latest speedbot & ratbot (thanks to Killerbee, author of
+ <a href="http://www.planetquake.com/q2admin">Q2Admin</a>).
+</ul>
+
+ <blockquote>Sorry for the delay but I've been very very busy moving house, and
+ starting a new job which means I do not have the same amount of free time to
+ dedicate to my gaming code.<br><br><i>Zarjazz</i>.</blockquote>
+
+<p align="center"><font color="yellow">.<br>.</font></p>
+
+<p><font size="-2" color="yellow">23/10/98</font> <font
+COLOR="#FF00FF">v1.00</font> : Released first public version.</p> 
+
+<!-- Bug Reporting -->
+
+<p><font size=+1 COLOR="#00FFFF">Bug Reporting:</font></p>
+
+<p>If you have problems with the admin dll causing server crashes in a
+<b>reproducable</b> manner can you please enable all the bw-admin and Q2
+logging options, wait for another crash and then send me all the
+logfiles. This will greatly help me track down any remaining bugs that
+I have been unable to find. Also, many thanks for all the feedback
+during the last few releases from too many people to mention. Without
+all the suggestions I would of been unable to add all the useful new
+options :)</p> 
+
+<!-- Installation -->
+
+<p><font size=+1 COLOR="#00FFFF">Installation:</font></p>
+
+<p><font color="yellow">Windows Q2 3.20+</font>:
+Unzip the file <i>BW-Admin.zip</i> into your game server directory
+(<i>Quake2/</i>, <i>KingPin/</i>).</p>
+
+<p><font color="yellow">Linux & Solaris</font> :
+For each server mod you want to use the admin software with, rename the original mod's
+<i>gamei386.so / gamesparc.so</i> file (eg <i>gamei386.so.real</i>). Then copy the admin
+<i>gamei386.so / gamesparc.so</i> file into the mod directory and put the name of the renamed
+file into the <i>bw-admin.cfg</i> file <b>dll =</b> line (see <font COLOR="#00FFFF">Configuration</font>).</p> 
+
+<!-- Automatic Updates -->
+
+<p><font size=+1 COLOR="#00FFFF">Automatic Updates:</font></p>
+
+<p>To enable the auto download & update features you will need to have
+installed <a href="http://sunsite.auc.dk/wget/">WGet</a> onto your
+system. WGet is normally a standard package on most modern Linux
+installations but it is fairly straight forward to compile the source
+code if you do not have it already on your server. Links to Windows
+98/NT versions are on the WGet homepage or you can download the WIN32
+executable from <a
+href="http://www.barrysworld.com/zarjazz/files/WGet.zip">HERE</a>.</p> 
+
+<p>To configure <a href="http://sunsite.auc.dk/wget/">WGet</a> for use
+with BW-Admin:
+
+<blockquote>
+on Unix system ensure it is installed in a standard path eg /usr/bin<br>
+on Windows, copy wget.exe to the directory where your server executable file
+is found.
+</blockquote>
+
+Then in the bw-admin.cfg file set "have_wget = 1"</p>
+
+<p>Read the instructions for the rest of the <i>auto_*</i> configuration settings belows</p>
+
+<!-- Configuration -->
+
+<p><font size=+1 COLOR="#00FFFF">Configuration:</font></p>
+
+<p>The DLL attempts to read a file called <i>bw-admin.cfg</i> from the root game
+server directory, and then the actual game mod directory. So you can specify
+global settings for all servers and then override specific configuration settings
+for individual servers. If you run multiple servers from a single directory and need
+to use seperate configuration files for each server, then you can override the name
+of the configuration file by using the command line option <b>+set bwcfg filename</b>.</p>
+
+<p>The file syntax is as follows : <b>&lt; option &gt; = &lt; value &gt;</b> <br>
+where the full option list is ...</p> 
+
+<p><small>NOTE: Default settings are shown in
+<b><font face="times new roman" color="#80FF80">bold</font></b>.</small></p>
+
+<center>
+<table BORDER="1" CELLPADDING="1" WIDTH=80%>
+
+	<!-- Server Settings -->
+
+<tr><td colspan=2><font COLOR="#00FFFF">Server Settings</font></td></tr>
+
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>dll = [name]</small></font><td>
+  <td><small>Tells the Admin DLL what the renamed original "gamei386.so" to be loaded is called.
+	MUST be given on LINUX and Solaris systems.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>motd = [file-name]</small></font><td>
+  <td><small>Specifies a file containing text to display to connecting players. The DLL first looks in the
+  mod directory and then the base Q2 directory for the file. Default = No MOTD.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>stuff = [file-name]</small></font><td>
+  <td><small>Specifies a file containing a list of commands to 'stuff' to a user when they connect and on
+  each map change. eg "allow_download_maps 1". Each command should be on a seperate line.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>itemspawns = [value] <font color="yellow">(Q2 Only)</font></small></font><td>
+  <td><small>Sets the item spawning flags. Default = <b>0</b> (see below).</small></td>
+</tr>
+
+	<!-- Bot Protection -->
+
+<tr><td colspan=2><font COLOR="#00FFFF">Bot Protection</font></td></tr>
+
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>botcheck = [0/<b>1</b>]</small></font><td>
+  <td><small><b>1</b> = Detect bots. <b>0</b> = Do not use bot detection code.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>botkick = [0/<b>1</b>]</small></font><td>
+  <td><small><b>1</b> = Kick any detected bots. <b>0</b> = Just log offenders name/ip.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>strict = [<b>0</b>/1/2] <font color="yellow">(Q2 Only)</font></small></font><td>
+  <td><small>This option checks the incoming connection and checks if the client looks to be
+  using anything a plain vanilla (normal) Win32 Quake2 client.<br>
+  <b>0</b> = Allow all connections to the server.<br>
+  <b>1</b> = Ultra strict. Prevents anything but a connection that acts like the plain
+  Quake2 executable to connect.<br>
+  <b>2</b> = Strict. Prevents any "dubious" clients from connecting to the server. This is mainly
+  designed to stop any bot-like proxies but allow *some* NAT users to connect.<br>
+
+  <b>WARNING</b>: Any strict setting other than <b>0</b> may prevent legitimate users
+  from connecting to the server, currently the Win 98 SE internet sharing option seems
+  to cause problems.
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>reject_msg = [0/<b>1</b>]</small></font><td>
+  <td><small>Tells a client why they were refused connection by BW-Admin (eg IP/Name Banned).
+	<b>0</b> = No rejection message.</small></td>
+</tr>
+
+	<!-- Player Voting -->
+
+<tr><td colspan=2><font COLOR="#00FFFF">Player Voting</font></td></tr>
+
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>p_limit = [value]</small></font><td>
+  <td><small>Sets the minimum number of players on the server needed before player voting can
+  be started. Default = <b>0</b> (voting disabled).</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>p_percent = [value]</small></font><td>
+  <td><small>The percentage of <b>Yes</b> votes needed for the voting to succeed must be <b>greater</b>
+  than this value. Default = <b>50.0</b></small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>p_kickban = [<b>0<b>/1]</small></font><td>
+  <td><small>If a player is kicked by a vote, ban them from the server.</small></td>
+</tr>
+
+	<!-- Client Settings -->
+
+<tr><td colspan=2><font COLOR="#00FFFF">Client Settings</font></td></tr>
+
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>maxfps = [value]</small></font><td>
+  <td><small>Sets the maxfps for the server. If not specified default = no limit.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>capkick = [value]</small></font><td>
+  <td><small>Due to technical reasons the maxfps capping is not instantaneous so a server admin can
+  be strict enforcing the maxfps capping. Specify the # of times the client can change their cl_maxfps setting per
+  map before getting kicked from the server. Default = 0 (no kicking).</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>maxrate = [value]</small></font><td>
+  <td><small>Sets the maxrate for the server. If not specified default = 25000.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>maxping = [value]</small></font><td>
+  <td><small>Sets the maximum allowed ping on the server (anyone whose ping goes above this value
+  will be kicked from server). Default is no limit. WARNING: Use with caution since this may
+  occasionally kick lagged players!</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>minping = [value]</small></font><td>
+  <td><small>Sets the minimum allowed ping on the server (anyone whose ping goes below this value will
+  be kicked from server). Default is no limit.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>spectators = [0/<b>1</b>]</small></font><td>
+  <td><small>Disallow / Allow Q2 3.20 type spectators on the server. Turning off
+  spectators (<b>0</b>) also fixes the annoying "invisible player" exploit.</small></td>
+</tr>
+
+	<!-- Misc Settings -->
+
+<tr><td colspan=2><font COLOR="#00FFFF">Misc Settings</font></td></tr>
+
+<tr>
+  <td width=200><font face="times new roman" color="#80FF80"><small>admin = [password]</small></font><td>
+  <td><small>Sets the DLL server admin password. Default is to disable the server admin option.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>super = [password]</small></font><td>
+  <td><small>Sets the DLL server supervisor password. Default is disable option.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>auth = [file]</small></font><td>
+  <td><small>Specifiy the file with the list of authorized (password protected) nick's used
+  on the server</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>exec = [file]</small></font><td>
+  <td><small>If this key is set then the DLL will tell the server to 'exec cfg-file' as if type at
+  server console. This command is only activated on the 1st ever client connection to the server.
+  <b>DO NOT</b> put a 'map ..' command in this 2nd server config or you will put the server into an
+  endless loop!!</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>banner = [0/<b>1</b>]</small></font><td>
+  <td><small><b>1</b> = Display banner text. <b>0</b> = No banner text.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>use_say_team = [0/<b>1</b>]</small></font><td>
+  <td><small>Disable / Enable the 'say_team' command.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>reload = [<b>0</b>/1]</small></font><td>
+  <td><small><b>1</b> = Reload the admin configuration after every map change.
+  <b>0</b> = Do not reload.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>overflow = [<b>0</b>/1] <font color="yellow">(Q2 Only)</font></small></font><td>
+  <td><small>Enable a work around for a server that get "SZGetSpace" errors <b>only</b>
+  when using the dll. This is a bug with certain mod's and not the dll really.</small></td>
+</tr>
+
+	<!-- Flood Protection -->
+
+<tr><td colspan=2><font COLOR="#00FFFF">Flood Protection</font></td></tr>
+
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>flood_lines = [value]</small></font><td>
+  <td><small>Specifies the maximum number of lines allowed within a set time.
+  Default = <b>0</b> (no flood protection).</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>flood_time = [value]</small></font><td>
+  <td><small>Specifies the allowed time used with <font face="times new roman" color="#80FF80">flood_lines</font>.
+	Default = <b>0</b> (no flood protection).</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>flood_ban = [value]</small></font><td>
+  <td><small>Set the number of seconds a client is unable to speak if flood protection is enabled.
+  Default = <b>5</b>.</small></td>
+</tr>
+
+	<!-- Logging Options -->
+
+<tr><td colspan=2><font COLOR="#00FFFF">Logging Options</font></td></tr>
+
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>logging = [<b>0</b>/1/2]</small></font><td>
+  <td><small>Logs Bot detection and several admin notices to a file called
+  "BW-Admin.log" in the mod directory. <b>0</b> = No logging. <b>1</b> = Create new log on
+  server initialization. <b>2</b> = Append to existing log.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>track_connect = [<b>0</b>/1]</small></font><td>
+  <td><small>If <b>1</b> then the DLL logs all (attempted) player connections to the file
+	"BW-Tracking.log" in the mod directory.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>track_disconnect = [<b>0</b>/1]</small></font><td>
+  <td><small>If <b>1</b> then the DLL logs all players disconnecting from server.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>track_renames = [<b>0</b>/1]</small></font><td>
+  <td><small>If <b>1</b> then the DLL logs all player name changes.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>track_refused = [<b>0</b>/1]</small></font><td>
+  <td><small>If <b>1</b> then the DLL logs all failed player connections and if
+  possible the reason why.</small></td>
+</tr>
+
+	<!-- Auto Downloads -->
+
+<tr><td colspan=2><font COLOR="#00FFFF">Auto Download</font></td></tr>
+
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>have_wget = [<b>0</b>/1]</small></font><td>
+  <td><small>If <b>1</b> then the DLL will use 'WGet' to check for updates and if enabled,
+  download and install new versions of the DLL. <b>0</b> = disable or no 'WGet' installed.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>auto_download = [0/<b>1</b>]</small></font><td>
+  <td><small><b>1</b> = the DLL will download the updated version to the same name/location
+  as the current DLL but with an extention of ".new". If <b>0</b> the DLL will not download.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>auto_install = [<b>0</b>/1]</small></font><td>
+  <td><small>If <b>1</b> the current DLL will	be copied to a backup file with '.bak' extension
+  and the new DLL will be moved into it's place. <b>NB</b> This does NOT mean the new dll is loaded.
+  This will only come into effect when the server is restarted. <b>0</b> = the DLL will not install
+  the new DLL.</small></td>
+</tr>
+<tr>
+  <td><font face="times new roman" color="#80FF80"><small>auto_restart = [<b>0</b>/1]</small></font><td>
+  <td><small>If <b>1</b> then if an updated DLL has been installed then the server will be terminated.
+  This option assumes you have some sort of automated server restart upon process termination.
+  <b>0</b> = the DLL will not kill the server.</small></td>
+</tr>
+
+</table></center>
+
+<p>The whole configuration (including bans) can be reloaded at anytime using the server console / rcon
+command <font face="fixedsys" COLOR="red">sv reload</font>.</p>
+
+
+<!-- Item Spawning -->
+
+<p><font size=+1 COLOR="#00FFFF">Item Spawning: <font color="yellow">(Q2 Only)</font></font></p>
+
+<p>Depending on the value of the 'itemspawns' flag specified in the DLL config file it is possible
+to disable certain items. The flags for each item are as follows:</p>
+
+<p><pre>
+# SHOTGUN		1   
+# SUPER_SHOTGUN		2   
+# MACHINEGUN		4   
+# CHAINGUN		8   
+# GRENADES		16  
+# GRENADE_LAUNCHER	32  
+# ROCKET_LAUNCHER	64  
+# HYPERBLASTER		128 
+# RAILGUN		256 
+# BFG			512 
+# QUAD			1024
+# INVULNERABILITY	2048
+# POWERSHEILD		4096
+</pre></p>
+
+<p>So if you wanted to disable Railgun and Quad: itemspawns = 256 + 1024
+= 1280</p> 
+
+<p>NOTE: This does not work with all mods and may even crash the server.
+You have been warned! :)</p> 
+
+<!-- Player Voting -->
+
+<p><font size=+1 COLOR="#00FFFF">Player Voting:</font></p>
+
+<p>Once the voting is enabled (see <font COLOR="#00FFFF">Configuration</font>) the follow command(s)
+are available to the players:</p>
+
+<p><b>Player Kicking</b>: A clients starts a vote by typing <b><i>p_kick "player"</i></b>
+where <b><i>player</i></b> is the nearest player name it can match against</p>
+
+<p>so if they wanted to kick <b><i>[IAM]A-Lamer</i></b>, they could just type
+<b><i>p_kick lamer</i></b> or <b><i>p_kick [iam]</i></b> and so on.</p>
+
+<p>All users then toggle their vote (default = NO) by using the command <b><i>p_vote</i></b>.</p>
+
+<p>After approx 60 second, the votes are counted and the player kicked if voting passed.</p>
+
+<!-- Auth File -->
+
+<p><font size=+1 COLOR="#00FFFF">Authorized Nick's:</font></p>
+
+<p>If the "auth = .." option is set in the configuration file, then the dll will attempt to
+read a file of the following format:</p>
+
+<pre><i>password <b>"</b>client name<b>"</b></i> (the quotes are required)</pre>
+
+Where <i>password</i> is a single string of ascii characters, and <i>client name</i>
+is matched case and high-ascii insensitive. Anyone attempting to connect to the server
+with a password protected nick will be refused, as will be anyone who changes their name
+while already on the server.</p>
+
+<p>To use such an authorized name, the client should type: <b><i>cl_nick password</i></b>
+and the relavent nick will be automatically assigned.</p>
+
+
+<!-- Ban Files -->
+
+<p><font size=+1 COLOR="#00FFFF">Bans File:</font></p>
+
+<p>The DLL tries to read the file "server_bans.txt" from the root Q2
+directory and also the mod directory. If both files exist then both
+files are read. The file contains a list of all the server bans. The
+format of each ban is as	follows:</p> 
+
+<hr align="center" width="25%">
+
+<p>IP Bans:<br><font face="times new roman" color="#80FF80">IP: [+/-]
+xxx.xxx.xxx.xxx[/0-32] [#N]</font> is the structure of the ip ban. The
+<font face="times new roman" color="#80FF80">[...]</font> fields are optional. 
+
+<p>
+<font face="times new roman" color="#80FF80">[+/-]</font>
+ : - denotes refuse access to this address, + means allow access. Default = -<br>
+<font face="times new roman" color="#80FF80">[/0-32]</font>
+ : specifies the subnet mask. Default = 32<br>
+<font face="times new roman" color="#80FF80">[#N]</font>
+ : only allow N connection from this address (only relevant if the '+' is flag used). Default is no limit on connection
+ count.
+</p>
+
+<p>NOTE: The lower the IP Ban is in the bans file the high the priority
+(ie overrides any previous bans). Examples:</p> 
+
+<p>
+<font face="times new roman" color="#80FF80">
+IP: - 148.88.88.0/24<br>
+IP: + 148.88.88.128/28<br></font><br>
+
+This list first bans the c-class subnet 148.88.88.* but then allows
+access from some subnet of that address.</p> 
+
+<p>
+<font face="times new roman" color="#80FF80">
+IP: - 0.0.0.0/0<br>
+IP: + 127.0.0.1 #1<br>
+IP: + 10.0.0.0/8 #10<br>
+IP: + 128.56.0.0/16<br></font><br>
+
+This list first bans ALL connections then allows 1 connection from the
+localhost, 10 from the a-class subnet 10.* and allows any number of
+connections from the b-class subnet 128.56.*</p> 
+
+<hr align="center" width="25%">
+
+<p>NAME Bans:<br><font face="times new roman" color="#80FF80">NAME: text</font>
+will ban anyone whose name <b>contains</b> the keyword
+<font face="times new roman" color="#80FF80">text</font>. The comparision
+is case insensitive and treats high ascii (colored text) as normal low ascii
+characters. Also anyone who changes their name during the game and the
+new name matches a ban will be kicked from server.</p> 
+
+<hr align="center" width="25%">
+
+<p>FILTER Bans:<br><font face="times new roman" color="#80FF80">FILTER:
+text</font> will perform a comparision similar to the Name ban system
+except that this searchs all client speech and if it <b>contains</b> a
+keyword <font face="times new roman" color="#80FF80">text</font> the offending
+line will not be received by any other player.</p> 
+
+<hr align="center" width="25%">
+
+<p>ALIAS Bans:<br><font face="times new roman" color="#80FF80">ALIAS: [name]
+[ip]</font> will only allow someone to use the alias
+<font face="times new roman" color="#80FF80">name</font> if they connect from the
+specified host. The <font face="times new roman" color="#80FF80">name</font> and
+<font face="times new roman" color="#80FF80">ip</font> follow the same rules as
+the IP and Name bans apart from the <font face="times new roman" color="#80FF80">ip</font>
+ignores the <font face="times new roman" color="#80FF80">[+/-]</font> and the
+<font face="times new roman" color="#80FF80">[#]</font> flags.</p> 
+
+<p>Examples:</p>
+
+<p>
+<font face="times new roman" color="#80FF80">
+ALIAS: Zarjazz 127.0.0.1<br>
+ALIAS: Zarjazz 195.65.0.0/16<br></font><br>
+
+The will only allow someone to use the nick 'Zarjazz' if they connect
+from the localhost or the b-class subnet 195.65.* <br>Note: at the
+moment, due to certain limitations, <font face="times new roman" color="#80FF80">name</font>
+must be a single string of text and contain
+no spaces. The name comparision must be an exact match (case and high
+ascii insensitive)</p> 
+
+<hr align="center" width="25%">
+
+<p>New bans can be added dynamically to the server bans file using the commands
+<font face="fixedsys" COLOR="red">sv addipban [ip]</font> and
+<font face="fixedsys" COLOR="red">sv addnameban [name]</font>.</p>
+
+<p>The current loaded bans list can be displayed using the command
+<font face="fixedsys" COLOR="red">sv bans</font>.</p>
+
+<!-- Server Admins -->
+
+<p><font size=+1 COLOR="#00FFFF">Server Admins:</font></p>
+
+<p>A connected player gains server admin status by typing at the console
+<font face="fixedsys" COLOR="red">sv_admin [password]</font>. If the password matches the DLL admin or
+supervisor password then that client has the option of using the following commands:</p>
+
+<p>
+<font face="fixedsys" COLOR="red">sv_ip [name]</font> List the IP of user 'name'<br>
+<font face="fixedsys" COLOR="red">sv_kick [text]</font> Kick any player whose name
+contains keyword "text" (like a NAME Ban but not added to server bansfile).
+Also available at server console using <font face="fixedsys" COLOR="red">sv kick</font>.<br>
+<font face="fixedsys" COLOR="red">sv_lock</font> Toggle server lockout (stop any new
+clients connecting).
+Also available at server console using <font face="fixedsys" COLOR="red">sv lock</font>.<br>
+<font face="fixedsys" COLOR="red">sv_mute [time] [text]</font> Enables mute on any
+player whose name contains keyword "text" for "time" seconds.<br>
+<font face="fixedsys" COLOR="red">sv_stuff [player] [cmd]</font> Stuffs a command
+to a specific player. Also available at server console using <font face="fixedsys"
+COLOR="red">sv stuff</font>. <br>
+<font face="fixedsys" COLOR="red">sv_addipban [ip]</font> Add IP Ban to server bansfile.<br>
+<font face="fixedsys" COLOR="red">sv_addnameban [name]</font> Add NAME Ban to server
+bansfile (also kicks any connected clients who match ban).<br>
+<font face="fixedsys" COLOR="red">sv_exec [file]</font> Exec's the config file on the server as
+if the admin had typed 'exec file' at the console but without needing rcon/console access.<br>
+</p>
+
+<p>Note: A supervisor is not able to add new server bans but all other
+commands are available</p> 
+
+<!-- Credits -->
+
+<p><font size=+1 COLOR="#00FFFF">Credits:</font></p>
+
+<p>
+Thanks to DBs for constant pestering, bug testing and forwarding some example code
+<font color="yellow">AFTER</font> I'd already finished the first version :)
+</p>
+
+<p>
+Special thanks to <i>Andreas Banze</i> for useful suggestions and feedback.
+</p>
+
+<p>One of the bot detection routines was based on code supplied by
+<b>Riv</b> <i>(riviera@earthling.net)</i></p>
+
+<p>
+==================================================<br>
+Original idea based on ZKick<br>
+ - anti-ZBot Proxy Game Module for Quake II<br>
+by Avi Rozen (Zung!)<br>
+==================================================<br>
+</p>
+
+
+</blockquote>
+
+
+<p align="center">==================================================================================</p>
+
+<p align="center"><a href="mailto:zarjazz@barrysworld.com">mailto:zarjazz@barrysworld.com</a>
+| <a href="http://www.barrysworld.com/zarjazz">http://www.barrysworld.com/zarjazz</a></p>
+
+<p align="center"><font face="Arial" color="#00FF80"><small><small>Copyright © 1998-2000</small></small></font></p>
+
+</BODY>
+</HTML>
